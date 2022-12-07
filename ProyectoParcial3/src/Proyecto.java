@@ -100,6 +100,7 @@ public class Proyecto extends JPanel implements Runnable{
         frame.setLayout(new BorderLayout());
         frame.setTitle("Proyecto Parcial 3 20110374");
         frame.setResizable(false);
+        frame.setBackground(new Color(113,220,240,255));
         Proyecto proyecto = new Proyecto();
         proyecto.setDoubleBuffered(true);
         frame.add(proyecto);
@@ -270,7 +271,7 @@ public class Proyecto extends JPanel implements Runnable{
             double[][] ovniresRot = MatrixMultiplication.multiplicarExecutorService(identityRot,ovnires,numhilos);
             drawCube(ovniresRot,new double[]{13,-3,10},51,50,g,Color.ORANGE,dishOvni,dishOvni,dishOvni,Color.DARK_GRAY,false,false);//dere lado de center
             drawCube(ovniresRot,new double[]{10,-7,10},-15,30,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,false,false);//centro
-            dibujarCirculoPuntoMedio(50,50,20,Color.CYAN,g);
+           // dibujarCirculoPuntoMedio(50,50,20,Color.CYAN,g);
             //derecha
             drawCube(ovniresRot,new double[]{13,-3,10},102,50,g,Color.ORANGE,dishOvni,dishOvni,dishOvni,dishOvni,false,false);
             //derecha arrriba abajo
@@ -424,36 +425,87 @@ public class Proyecto extends JPanel implements Runnable{
     public void background(Graphics g){
         //Squidward house
         Color squidwardHouse = new Color(77, 121, 168);
-        rellenoScanLine(new int[][]{{350,200},{500,450}},g,squidwardHouse);
-        rellenoScanLine(new int[][]{{325,250},{350,350}},g,squidwardHouse);
-        rellenoScanLine(new int[][]{{500,250},{525,350}},g,squidwardHouse);
         Color squidwardHouseFace = new Color(4,18,49);
-        rellenoScanLine(new int[][]{{360,225},{490,250}},g,squidwardHouseFace);
-        rellenoScanLine(new int[][]{{400,225},{450,350}},g,squidwardHouseFace);
-        Color squidwardWindows = new Color(109,140,230);
+        double squidwardHousePoints[][] = {
+                //A     B    C   D     E   F    G   H
+                {150, 330, 330, 150,   0, 180,  180,   0},//x
+                {200, 200, -20, -20, 200, 200, -20, -20},//y
+                {150, 150, 150, 150,  50,  50, 50, 50},//z
+                {  1,   1,   1,   1,   1,   1,   1,   1,}
+        };
+        double squidwardHousePointsEars[][] = {
+                //A     B    C   D     E   F    G   H
+                {150, 190, 190, 150,   0, 40,  40,   0},//x
+                {200, 200, 120, 120, 200, 200, 120, 120},//y
+                {150, 150, 150, 150,  50,  50, 50, 50},//z
+                {  1,   1,   1,   1,   1,   1,   1,   1,}
+        };
+        double squidwardHousePointsDoor[][] = {
+                //A     B    C   D     E   F    G   H
+                {150, 190, 190, 150,   0, 40,  40,   0},//x
+                {200, 200, 160, 160, 200, 200, 160, 160},//y
+                {150, 150, 150, 150,  50,  50, 50, 50},//z
+                {  1,   1,   1,   1,   1,   1,   1,   1,}
+        };
+        double bobHousePointsRoof[][] = {
+                //A     B    C   D     E   F    G   H
+                {150, 370, 370, 150,   0, 220,  220,   0},//x
+                {200, 200, 150, 150, 200, 200, 150, 150},//y
+                {150, 150, 150, 150,  50,  50, 50, 50},//z
+                {  1,   1,   1,   1,   1,   1,   1,   1,}
+        };
 
-        Color squidwardDoor = new Color(172,127,73);
-        rellenoScanLine(new int[][]{{400,400},{450,450}},g,squidwardDoor);
+
+        //rellenoScanLine(new int[][]{{350,200},{500,450}},g,squidwardHouse);
+       // rellenoScanLine(new int[][]{{325,250},{350,350}},g,squidwardHouse);
+       // rellenoScanLine(new int[][]{{500,250},{525,350}},g,squidwardHouse);
+        Color dawn =  new Color(228, 151, 89);
         //Patrick's housen
         Color patrickStick = new Color(164, 157, 61);
-
+        drawElipse(180,375,3,20,patrickStick,g);
         Color patrickHouse = new Color(50, 23, 28);
-
-        //Bob's house
-        Color bobHouse = new Color(212,97,26);
-        rellenoScanLine(new int[][]{{650,250},{825,450}},g,bobHouse);
-        Color bobRoof = new Color(55,112,20);
-        rellenoScanLine(new int[][]{{630,200},{845,250}},g,bobRoof);
-
-
-        Color bobDoor = new Color(96,124,195);
-        rellenoScanLine(new int[][]{{715,400},{765,450}},g,bobDoor);
-
+        dibujarCirculoPuntoMedio(180,430,45,patrickHouse,g);
         //street
         Color street = new Color(56,80,80);
         rellenoScanLine(new int[][]{{0,450},{getWidth(),getHeight()}},g,street);
+        //Bob's house
+        Color bobHouse = new Color(212,97,26);
+        Color bobHouseLine = new Color(159, 86, 41);
+
+        //rellenoScanLine(new int[][]{{650,250},{825,450}},g,bobHouse);
+        drawCube(squidwardHousePoints, new double[]{13, -3, 10}, 700, 240, g, bobHouseLine, bobHouse, bobHouse, dawn, Color.DARK_GRAY, true, false);
+
+        Color bobRoof = new Color(55,112,20);
+        //rellenoScanLine(new int[][]{{630,200},{845,250}},g,bobRoof);
+        drawCube(bobHousePointsRoof, new double[]{13, -3, 10}, 680, 19, g, Color.black, bobRoof, bobRoof, dawn, Color.DARK_GRAY, true, false);
+
+
+
+        Color bobDoor = new Color(96,124,195);
+       // rellenoScanLine(new int[][]{{715,400},{765,450}},g,bobDoor);
+        dibujarCirculoPuntoMedio(695,300,25,bobDoor,g);
+        dibujarCirculoPuntoMedio(795,380,25,bobDoor,g);
+        drawCube(squidwardHousePointsDoor, new double[]{14.5, -.3, 10}, 800, 280, g, Color.BLACK, bobDoor, bobDoor, Color.DARK_GRAY, Color.DARK_GRAY, true, false);
+
+
+        //Squidward
+        drawCube(squidwardHousePointsEars, new double[]{13, -3, 10}, 580, 140, g, squidwardHouseFace, squidwardHouse, squidwardHouse, squidwardHouse, Color.DARK_GRAY, true, false);
+        drawCube(squidwardHousePoints, new double[]{13, -3, 10}, 400, 240, g, squidwardHouseFace, squidwardHouse, squidwardHouse, dawn, Color.DARK_GRAY, true, false);
+        drawCube(squidwardHousePointsEars, new double[]{13, -3, 10}, 360, 140, g, squidwardHouseFace, squidwardHouse, squidwardHouse, dawn, Color.DARK_GRAY, true, false);
+
+        rellenoScanLine(new int[][]{{378,265},{508,290}},g,squidwardHouseFace);
+        rellenoScanLine(new int[][]{{418,265},{468,390}},g,squidwardHouseFace);
+        Color squidwardWindows = new Color(109,140,230);
+        dibujarCirculoPuntoMedio(390,320,25,squidwardWindows,g);
+        dibujarCirculoPuntoMedio(500,320,25,squidwardWindows,g);
+        Color squidwardDoor = new Color(172,127,73);
+        Color squidwardDoorDarker = new Color(110, 83, 53);
+        //rellenoScanLine(new int[][]{{400,400},{450,450}},g,squidwardDoor);
+        drawCube(squidwardHousePointsDoor, new double[]{14.5, -.3, 10}, 485, 280, g, Color.black, squidwardDoor, squidwardDoor, squidwardDoorDarker, Color.DARK_GRAY, true, false);
+
         //Sun
-        Color sun = new Color(249, 231, 42);
+        Color sun = new Color(178,67,66);
+        dibujarCirculoPuntoMedio(0,70,100,sun,g);
 
     }//background
 
@@ -587,7 +639,19 @@ public class Proyecto extends JPanel implements Runnable{
         }
         return  result;
     }
+    public void drawElipse(int xc, int yc, int rx, int ry,Color c,Graphics g){
+        int x=xc-rx;
+        int y=yc;
+        putPixel(x,y,c,g);
+        g.setColor(c);
+        g.fillOval(xc-rx,yc-ry,rx*2,ry*2);
+        for (double i=0;i<=(2*Math.PI); i+=Math.PI/1000){
+            x= (int) (xc + (rx * Math.sin(i)));
+            y= (int) (yc + (ry * Math.cos(i)));
+            putPixel(x,y,c,g);
 
+        }//for
+    }//drawElipse
 
     private void lineaBresenham(double xini, double yini, double xfin, double yfin, Graphics g, Color c){
         int x0 = (int) Math.round(xini);
