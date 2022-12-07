@@ -264,22 +264,22 @@ public class Proyecto extends JPanel implements Runnable{
         Color dishOvni = new Color(143, 155, 197);
 
         if(!rotacionOvni&&!escalarOvni) {
-            drawCube(ovnires, new double[]{13, -3, 10}, 51, 50, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, false, false);//dere lado de center
-            drawCube(ovnires, new double[]{10, -7, 10}, -15, 30, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);//centro
+            drawCube(ovnires, new double[]{13, -3, 10}, 51, 50, g, Color.BLACK, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, true, false);//dere lado de center
+            drawCube(ovnires, new double[]{10, -7, 10}, -15, 30, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);//centro
             //dibujarCirculoPuntoMedio(50, 50, 20, Color.CYAN, g);
             //derecha
-            drawCube(ovnires, new double[]{13, -3, 10}, 102, 50, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102, 50, g, Color.BLACK, dishOvni, dishOvni, dishOvni, dishOvni, true, false);
             //derecha arrriba abajo
-            drawCube(ovnires, new double[]{13, -3, 10}, 102, 100, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102, 100, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
 
-            drawCube(ovnires, new double[]{13, -3, 10}, 102, 0, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102, 0, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             //izquierda
-            drawCube(ovnires, new double[]{13, -3, 10}, -51, 50, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(ovnires, new double[]{13, -3, 10}, -102, 100, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -51, 50, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102, 100, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
 
-            drawCube(ovnires, new double[]{13, -3, 10}, -102, 50, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102, 50, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             //izq arrriba abajo
-            drawCube(ovnires, new double[]{13, -3, 10}, -102, 0, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102, 0, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             if (!flagOvniX)
                 txOvni++;
             if (txOvni == 500 && !flagOvniX) {
@@ -293,7 +293,7 @@ public class Proyecto extends JPanel implements Runnable{
                 rotacionOvni = true;
             }
             //perspectiva
-            //drawCube(ovnires,new double[]{30,30,30},0,50,g,Color.ORANGE,Color.red,Color.BLACK,Color.YELLOW,Color.DARK_GRAY,true,true);
+            //drawCube(ovnires,new double[]{30,30,30},0,50,g,Color.BLACK,Color.red,Color.BLACK,Color.YELLOW,Color.DARK_GRAY,true,true);
         }else{
             lineaBresenham(0,0,0,0,g,Color.WHITE);
         }
@@ -305,22 +305,22 @@ public class Proyecto extends JPanel implements Runnable{
                     {0,0,0,1}
             };
             double[][] ovniresRot = MatrixMultiplication.multiplicarExecutorService(identityRot,ovnires,numhilos);
-            drawCube(ovniresRot,new double[]{13,-3,10},51,50,g,Color.ORANGE,dishOvni,dishOvni,dishOvni,Color.DARK_GRAY,false,false);//dere lado de center
-            drawCube(ovniresRot,new double[]{10,-7,10},-15,30,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,false,false);//centro
+            drawCube(ovniresRot,new double[]{13,-3,10},51,50,g,Color.BLACK,dishOvni,dishOvni,dishOvni,Color.DARK_GRAY,true,false);//dere lado de center
+            drawCube(ovniresRot,new double[]{10,-7,10},-15,30,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,true,false);//centro
            // dibujarCirculoPuntoMedio(50,50,20,Color.CYAN,g);
             //derecha
-            drawCube(ovniresRot,new double[]{13,-3,10},102,50,g,Color.ORANGE,dishOvni,dishOvni,dishOvni,dishOvni,false,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},102,50,g,Color.BLACK,dishOvni,dishOvni,dishOvni,dishOvni,true,false);
             //derecha arrriba abajo
-            drawCube(ovniresRot,new double[]{13,-3,10},102,100,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,dishOvni,false,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},102,100,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,dishOvni,true,false);
 
-            drawCube(ovniresRot,new double[]{13,-3,10},102,0,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,false,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},102,0,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,true,false);
             //izquierda
-            drawCube(ovniresRot,new double[]{13,-3,10},-51,50,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,false,false);
-            drawCube(ovniresRot,new double[]{13,-3,10},-102,100,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,dishOvni,false,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},-51,50,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,true,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},-102,100,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,dishOvni,true,false);
 
-            drawCube(ovniresRot,new double[]{13,-3,10},-102,50,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,false,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},-102,50,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,true,false);
             //izq arrriba abajo
-            drawCube(ovniresRot,new double[]{13,-3,10},-102,0,g,Color.ORANGE,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,false,false);
+            drawCube(ovniresRot,new double[]{13,-3,10},-102,0,g,Color.BLACK,dishOvni,dishOvni,Color.YELLOW,Color.DARK_GRAY,true,false);
             if(!rotacionVueltaHecha)
                 tzOvniRot += Math.toRadians(0.5);
             if(tzOvniRot== 6.268313177841316) {
@@ -348,22 +348,22 @@ public class Proyecto extends JPanel implements Runnable{
         int aumento = 0;
         if(!escalarFin) {
 
-            drawCube(resEsc, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, false, false);//dere lado de center
+            drawCube(resEsc, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.BLACK, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, true, false);//dere lado de center
             //
             //dibujarCirculoPuntoMedio(50, 50, 20, Color.CYAN, g);
             //derecha
-            drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, dishOvni, false, false);
+            drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, dishOvni, dishOvni, true, false);
             //derecha arrriba abajo
-            drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 100 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
+            drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 100 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
 
-            drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 0 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 0 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             //izquierda
-            drawCube(resEsc, new double[]{13, -3, 10}, -51 - aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(resEsc, new double[]{13, -3, 10}, -102 + aumento, 100 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
-            drawCube(resEsc, new double[]{10, -7, 10}, -15-aumento, 30+aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);//centro
+            drawCube(resEsc, new double[]{13, -3, 10}, -51 - aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(resEsc, new double[]{13, -3, 10}, -102 + aumento, 100 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
+            drawCube(resEsc, new double[]{10, -7, 10}, -15-aumento, 30+aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);//centro
 
-            drawCube(resEsc, new double[]{13, -3, 10}, -102 - aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(resEsc, new double[]{13, -3, 10}, -102 - aumento, 0 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(resEsc, new double[]{13, -3, 10}, -102 - aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(resEsc, new double[]{13, -3, 10}, -102 - aumento, 0 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
 
         }else{
             lineaBresenham(0,0,0,0,g,Color.WHITE);
@@ -391,21 +391,21 @@ public class Proyecto extends JPanel implements Runnable{
             numhilos = Runtime.getRuntime().availableProcessors();
             double[][] ovnires = MatrixMultiplication.multiplicarExecutorService(identityTrasla, resEsc, numhilos);
             //head
-            drawCube(ovnires, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, false, false);//dere lado de center
+            drawCube(ovnires, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.BLACK, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, true, false);//dere lado de center
             //
             //derecha
-            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, dishOvni, dishOvni, true, false);
             //derecha arrriba abajo
-            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 100 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 100 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
 
-            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 0 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 0 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             //izquierda
-            drawCube(ovnires, new double[]{13, -3, 10}, -51 - aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(ovnires, new double[]{13, -3, 10}, -102 + aumento, 100 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
-            drawCube(ovnires, new double[]{10, -7, 10}, -15-aumento, 30+aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);//centro
+            drawCube(ovnires, new double[]{13, -3, 10}, -51 - aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102 + aumento, 100 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
+            drawCube(ovnires, new double[]{10, -7, 10}, -15-aumento, 30+aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);//centro
 
-            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 0 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 0 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             if(yArriba<=40) {
                 yArriba++;
             }else{
@@ -428,21 +428,21 @@ public class Proyecto extends JPanel implements Runnable{
             numhilos = Runtime.getRuntime().availableProcessors();
             double[][] ovnires = MatrixMultiplication.multiplicarExecutorService(identityTrasla, resEsc, numhilos);
             //head
-            drawCube(ovnires, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, false, false);//dere lado de center
+            drawCube(ovnires, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.BLACK, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, true, false);//dere lado de center
             //
             //derecha
-            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, dishOvni, dishOvni, true, false);
             //derecha arrriba abajo
-            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 100 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 100 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
 
-            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 0 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, 102 + aumento, 0 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
             //izquierda
-            drawCube(ovnires, new double[]{13, -3, 10}, -51 - aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(ovnires, new double[]{13, -3, 10}, -102 + aumento, 100 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, dishOvni, false, false);
-            drawCube(ovnires, new double[]{10, -7, 10}, -15-aumento, 30+aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);//centro
+            drawCube(ovnires, new double[]{13, -3, 10}, -51 - aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102 + aumento, 100 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, dishOvni, true, false);
+            drawCube(ovnires, new double[]{10, -7, 10}, -15-aumento, 30+aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);//centro
 
-            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
-            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 0 + aumento, g, Color.ORANGE, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, false, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 50 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
+            drawCube(ovnires, new double[]{13, -3, 10}, -102 - aumento, 0 + aumento, g, Color.BLACK, dishOvni, dishOvni, Color.YELLOW, Color.DARK_GRAY, true, false);
 
 
 

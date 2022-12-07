@@ -107,6 +107,16 @@ public class Escalar extends JPanel implements Runnable{
     public void drawCube(double[][] puntos,double[] direccion,double origenX,double origenY,Graphics g, Color c){
         double [][] result;
         result = multiplicarMatriz(puntos,direccion,origenX,origenY);
+        int rest = (int) (result[0][1] - result[0][0]);
+        fill(rest, result[0][0], result[1][0], result[0][1], result[1][1], g, Color.RED);
+
+        rest = (int) (result[0][3] - result[0][2]);
+        fill( rest, result[0][2], result[1][2], result[0][3], result[1][3], g, Color.RED);
+        fill2(rest, result[0][0], result[1][0], result[0][2], result[1][2], g, Color.RED);
+        line(result,g,Color.black,Color.RED,Color.cyan,Color.blue,Color.yellow);
+        rest = (int) (result[0][1] - result[0][3]);
+        //fill2( rest, result[0][1], result[1][1], result[0][3], result[1][3], g, Color.RED);
+
         //Frente
         lineaBresenham(result[0][0], result[1][0], result[0][1], result[1][1], g, c);//AB
         lineaBresenham(result[0][1], result[1][1], result[0][2], result[1][2], g,c);////BD
@@ -122,8 +132,8 @@ public class Escalar extends JPanel implements Runnable{
         lineaBresenham(result[0][1], result[1][1], result[0][5], result[1][5], g, c);//BE
         lineaBresenham(result[0][2], result[1][2], result[0][6], result[1][6], g, c);//DH
         lineaBresenham(result[0][3], result[1][3], result[0][7], result[1][7], g, c); //CG
-
     }//drawCube
+
 
 
     public double[][] multiplicarMatriz(double[][] matriz, double[] direccion,double origenX,double origenY){
@@ -141,10 +151,25 @@ public class Escalar extends JPanel implements Runnable{
             result[0][i] = Math.abs(result[0][i]);
 
         }
+
         return  result;
     }//multiplicarMatriz
 
+    public void fill2(int rest, double x1, double y1, double x2, double y2, Graphics g, Color c) {
 
+        for (int i = 0; i <= rest; i++) {
+            lineaBresenham(x1 + i, (int) y1, x2 + i, (int) y2, g, c);
+        }
+
+    }
+
+    public void fill(int rest, double x1, double y1, double x2, double y2, Graphics g, Color c) {
+
+        for (int i = 0; i <= rest; i++) {
+            lineaBresenham(x1, (int) y1 + i, x2, (int) y1 + i, g, c);
+        }
+
+    }
 
     private void lineaBresenham(double xini, double yini, double xfin, double yfin, Graphics g, Color c){
         int x0 = (int) Math.round(xini);
@@ -200,7 +225,34 @@ public class Escalar extends JPanel implements Runnable{
             }
         }
     }//lineaBresenham
+    private  void line(double[][] result,Graphics g, Color c,Color c1,Color c2,Color c3,Color c4){
+        filling(result,g,c,c1,c2,c3,c4);
+    }
+    private void filling(double[][] result,Graphics g, Color c,Color c1,Color c2,Color c3,Color c4){
+        g.setColor(c1);
+        g.fillPolygon(new int[]{(int) Math.round(result[0][0]), (int) Math.round(result[0][1]),
+                (int) Math.round(result[0][2]),(int) Math.round(result[0][3])},new int[]{(int) Math.round(result[1][0]), (int) Math.round(result[1][1]),
+                (int) Math.round(result[1][2]),(int) Math.round(result[1][3])},4);
 
+
+        g.setColor(c3);
+        g.fillPolygon(new int[]{
+                (int) Math.round(result[0][0]), (int) Math.round(result[0][4]), (int) Math.round(result[0][7]),(int) Math.round(result[0][3])},new int[]{
+                (int) Math.round(result[1][0]), (int) Math.round(result[1][4]), (int) Math.round(result[1][7]),(int) Math.round(result[1][3])},4);
+
+        g.setColor(c4);
+        g.fillPolygon(new int[]{
+                (int) Math.round(result[0][0]), (int) Math.round(result[0][1]), (int) Math.round(result[0][5]),(int) Math.round(result[0][4])},new int[]{
+                (int) Math.round(result[1][0]), (int) Math.round(result[1][1]), (int) Math.round(result[1][5]),(int) Math.round(result[1][4])},4);
+
+
+        /* g.setColor(c2);
+        g.fillPolygon(new int[]{
+                (int) Math.round(result[0][4]), (int) Math.round(result[0][5]), (int) Math.round(result[0][6]),(int) Math.round(result[0][7])},new int[]{
+                (int) Math.round(result[1][4]), (int) Math.round(result[1][5]), (int) Math.round(result[1][6]),(int) Math.round(result[1][7])},4);
+*/
+
+    }//fill
 
 
 }
