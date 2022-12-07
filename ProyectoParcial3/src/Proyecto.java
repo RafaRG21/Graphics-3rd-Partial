@@ -10,7 +10,7 @@ public class Proyecto extends JPanel implements Runnable{
     private Image fondo;
     private Thread hilo;
     private BufferedImage bufferedImage;
-    private boolean firstTime = true;
+    private boolean firstTime = true,flagCubo=false;
     private Image buffer;
 
     private boolean horaAbducir = false, flagOvniX=false,flagOvniY=false,rotacionOvni=false,rotacionVueltaHecha=false;
@@ -21,6 +21,7 @@ public class Proyecto extends JPanel implements Runnable{
     private double txOvni = 0, tyOvni=-170, tzOvni=1;
     private double tzOvniRot=0.5;
     private  double txOvniEsc=1, tyOvniEsc=1, tzOvniEsc=1;
+    private double txCubo=1,tyCubo=1,tzCubo=1;
     int yArriba = 0;
 
     double bus[][] = {
@@ -135,6 +136,7 @@ public class Proyecto extends JPanel implements Runnable{
         Graphics gbuffer = buffer.getGraphics();
         gbuffer.setClip(0, 0, getWidth(), getHeight());
         g.drawImage(fondo, 0, 0, this);
+        //cubosFondo(g);
         bus(g);
         ovni(g);
         if(finished){
@@ -167,6 +169,40 @@ public class Proyecto extends JPanel implements Runnable{
 
 
     }//update
+    public void cubosFondo(Graphics g){
+        double[][] identity = {
+                {txCubo,0,0,0},
+                {0,tyCubo,0,0},
+                {0,0,tzCubo,0},
+                {0,0,0,1}
+        };
+        double cube[][] = {
+                //A     B    C   D     E   F    G   H
+                {150, 190, 190, 150,   0, 40,  40,   0},//x
+                {200, 200, 160, 160, 200, 200, 160, 160},//y
+                {150, 150, 150, 150,  50,  50, 50, 50},//z
+                {  1,   1,   1,   1,   1,   1,   1,   1,}
+        };
+        int numhilos = Runtime.getRuntime().availableProcessors();
+        double[][] res = MatrixMultiplication.multiplicarExecutorService(identity,cube,numhilos);
+        drawCube(res, new double[]{14.5, -.3, 10}, 51, 50, g, Color.PINK, new Color(223,85,167,255), new Color(223,85,167,255), new Color(223,85,167,255), Color.DARK_GRAY, true, false);//dere lado de center
+
+        if(!flagCubo) {
+            txCubo += 0.02;
+            tyCubo += 0.02;
+            System.out.println("tzCubo: "+txCubo);
+        }
+        else {
+            txCubo -= 0.02;
+            tyCubo -= 0.02;
+            System.out.println("tzCubo: "+txCubo);
+
+        }
+        if(txCubo==1.5000000000000004)
+            flagCubo = true;
+        if(txCubo == 1)
+            flagCubo = false;
+    }
     public void bus(Graphics g){
         double[][] identity = {
                 {1,0,0,tx},
@@ -314,7 +350,7 @@ public class Proyecto extends JPanel implements Runnable{
 
             drawCube(resEsc, new double[]{13, -3, 10}, 51+aumento, 50+aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, Color.DARK_GRAY, false, false);//dere lado de center
             //
-            dibujarCirculoPuntoMedio(50, 50, 20, Color.CYAN, g);
+            //dibujarCirculoPuntoMedio(50, 50, 20, Color.CYAN, g);
             //derecha
             drawCube(resEsc, new double[]{13, -3, 10}, 102 + aumento, 50 + aumento, g, Color.ORANGE, dishOvni, dishOvni, dishOvni, dishOvni, false, false);
             //derecha arrriba abajo
@@ -459,6 +495,12 @@ public class Proyecto extends JPanel implements Runnable{
         //rellenoScanLine(new int[][]{{350,200},{500,450}},g,squidwardHouse);
        // rellenoScanLine(new int[][]{{325,250},{350,350}},g,squidwardHouse);
        // rellenoScanLine(new int[][]{{500,250},{525,350}},g,squidwardHouse);
+        drawFigure(150,200,g,new Color(167,124,159,255));
+        drawFigure(350,220,g,new Color(211,253,248,255));
+        drawFigure(550,270,g,new Color(167,124,159,255));
+        drawFigure(750,150,g,new Color(211,253,248,255));
+
+
         Color dawn =  new Color(228, 151, 89);
         //Patrick's housen
         Color patrickStick = new Color(164, 157, 61);
@@ -652,7 +694,21 @@ public class Proyecto extends JPanel implements Runnable{
 
         }//for
     }//drawElipse
+    public void drawFigure(int xpos, int ypos, Graphics g, Color c){
+        double x1 = xpos, y1= ypos, x2,y2,xopc1=0,xopc2=0,yopc1=0,yopc2=0;
+        double inc = Math.PI / 500;
+        for (double t=0; t<2*Math.PI; t+=inc){
+            x2 = (Math.cos(t) + (.5)*Math.cos(7*t) + (.333)*Math.sin(17*t))*50 +xpos;
+            y2 = (Math.sin(t) + (.5)*Math.sin(7*t) + (.333)*Math.cos(17*t))*50 +ypos;
+            System.out.println("x: "+x2);
+            System.out.println("y: "+y2);
+            if(t!=0)
+                lineaBresenham((int) x1, (int) y1, (int) x2, (int) y2,g,c);
+            x1 = x2;
+            y1 = y2;
 
+        }
+    }//drawFigure
     private void lineaBresenham(double xini, double yini, double xfin, double yfin, Graphics g, Color c){
         int x0 = (int) Math.round(xini);
         int y0 = (int) Math.round(yini);
